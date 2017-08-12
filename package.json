@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "license": "UNLICENSED",
   "scripts": {
-    "build:dev": "next"
+    "build:dev": "NODE_ENV='development' node server.js"
   },
   "dependencies": {
+    "express": "^4.15.4",
     "next": "^3.0.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
