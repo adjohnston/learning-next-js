@@ -1,13 +1,11 @@
-import Header from '../components/Header'
+import Layout from '../components/Layout'
 
 export default function() {
   return (
-    <div>
-      <Header />
-
+    <Layout>
       <p>
         An about page
       </p>
-    </div>
+    </Layout>
   )
 }
