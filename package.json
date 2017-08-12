@@ -1,4 +1,10 @@
 {
+  "name": "learning-next-js",
+  "version": "0.1.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build:dev": "next"
+  },
   "dependencies": {
     "next": "^3.0.3",
     "react": "^15.6.1",
