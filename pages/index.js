@@ -1,14 +1,9 @@
-import Link from 'next/link'
+import Header from '../components/Header'
 
 export default function() {
   return (
     <div>
-      <Link
-        href="/about">
-        <button>
-          About
-        </button>
-      </Link>
+      <Header />
 
       <p>
         Hello Next.js
