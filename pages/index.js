@@ -1,15 +1,26 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
 
-const titles = [
-  'Hello Next.js',
-  'Learn Next.js is awesome',
-  'Deploy apps with Zeit'
+const links = [
+  {
+    slug: 'hello-next-js',
+    title: 'Hello Next.js',
+  },
+  {
+    slug: 'learning-next-js-is-awesome',
+    title: 'Learning Next.js is awesome',
+  },
+  {
+    slug: 'deploy-apps-with-zeit',
+    title: 'Deploy apps with Zeit',
+  },
 ]
 
-const PostLink = ({ title }) => (
+const PostLink = ({ slug, title }) => (
   <li>
-    <Link href={`/post?title=${title}`}>
+    <Link
+      as={`/post/${slug}`}
+      href={`/post?title=${title}`}>
       <a>{title}</a>
     </Link>
   </li>
@@ -20,9 +31,10 @@ export default () => (
     <h1>My Blog</h1>
 
     <ul>
-      {titles.map(title => (
+      {links.map(({ slug, title }) => (
         <PostLink
-          key={title}
+          key={slug}
+          slug={slug}
           title={title} />
       ))}
     </ul>
