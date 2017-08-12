@@ -12,7 +12,7 @@ const PostLink = ({ id, title }) => (
   <li>
     <Link
       as={`/post/${id}`}
-      href={`/post?title=${title}`}>
+      href={`/post?id=${id}`}>
       <a>{title}</a>
     </Link>
     <style jsx>{`
@@ -56,16 +56,5 @@ const Index = (props) => (
     `}</style>
   </Layout>
 )
-
-Index.getInitialProps = async () => {
-  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
-  const data = await res.json()
-
-  console.log(`Show data fetched. Count: ${data.length}`)
-
-  return {
-    shows: data
-  }
-}
 
 export default Index

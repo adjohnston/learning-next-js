@@ -13,6 +13,7 @@ app
     server.get('/post/:id', (req, res) => {
       const page = '/post'
       const params = { id: req.params.id }
+      console.log(params)
       app.render(req, res, page, params)
     })
 
