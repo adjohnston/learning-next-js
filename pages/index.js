@@ -1,42 +1,34 @@
 import Link from 'next/link'
 import Layout from '../components/Layout'
+import fetch from 'isomorphic-unfetch'
 
-const links = [
-  {
-    slug: 'hello-next-js',
-    title: 'Hello Next.js',
-  },
-  {
-    slug: 'learning-next-js-is-awesome',
-    title: 'Learning Next.js is awesome',
-  },
-  {
-    slug: 'deploy-apps-with-zeit',
-    title: 'Deploy apps with Zeit',
-  },
-]
-
-const PostLink = ({ slug, title }) => (
-  <li>
-    <Link
-      as={`/post/${slug}`}
-      href={`/post?title=${title}`}>
-      <a>{title}</a>
-    </Link>
-  </li>
-)
-
-export default () => (
+const Index = (props) => (
   <Layout>
     <h1>My Blog</h1>
 
     <ul>
-      {links.map(({ slug, title }) => (
-        <PostLink
-          key={slug}
-          slug={slug}
-          title={title} />
+      {props.shows.map(({ show: { id, name } }) => (
+        <li key={id}>
+          <Link
+            as={`/post/${id}`}
+            href={`/post?id=${id}`}>
+            <a>{name}</a>
+          </Link>
+        </li>
       ))}
     </ul>
   </Layout>
 )
+
+Index.getInitialProps = async () => {
+  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
+  const data = await res.json()
+
+  console.log(`Show data fetched. Count: ${data.length}`)
+
+  return {
+    shows: data
+  }
+}
+
+export default Index
